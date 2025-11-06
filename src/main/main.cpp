@@ -670,7 +670,7 @@ void init ( void ) {
   }
 
 
-#if defined( PRIMUSX ) || defined( PRIMUSX2 )
+#if defined( PRIMUSX ) || defined( PRIMUSV4 )
   unibusAdcInit ( );
   xRangingInit ( );
   if ( localisationType == UWB ) {

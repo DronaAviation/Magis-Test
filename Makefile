@@ -26,12 +26,12 @@
 ###############################################################################
 # User-configurable options
 FORKNAME	=	MAGIS
-TARGET	?=	
+TARGET	?=	PRIMUSV4
 PROJECT ?= DEFAULT
-BUILD_TYPE	?= BIN
+BUILD_TYPE	?= LIB
 LIB_MAJOR_VERSION	=	0
 LIB_MINOR_VERSION	=	3
-FW_Version	=	2.1.0-beta
+FW_Version	=	2.2.0-beta
 API_Version	=	1.0.1
 # Flash size (KB).  Some low-end chips actually have more flash than advertised, use this to override.
 FLASH_SIZE	?=
@@ -100,7 +100,7 @@ VPATH := 	$(VPATH) \
 CSOURCES	:=	$(shell find $(SRC_DIR) -name '*.c')
 
 # MCU and Peripheral settings for PRIMUSX
-ifeq ($(TARGET),PRIMUSX)
+ifeq ($(TARGET),$(filter $(TARGET),PRIMUSX PRIMUSV4))
 
 STDPERIPH_DIR = $(ROOT)/lib/main/STM32F30x_StdPeriph_Driver
 
@@ -353,6 +353,39 @@ PRIMUSV3R_SRC = startup_stm32f10x_md_gcc.S \
 		  					$(PRIMUSV3R_SENSORS) \
 								hardware_revision.cpp \
 
+PRIMUSV4_DRIVERS = 	drivers/adc.cpp \
+		   							drivers/adc_stm32f30x.c \
+		   							drivers/accgyro_mpu.cpp \
+		   							drivers/accgyro_mpu6500.cpp \
+		   							drivers/accgyro_icm20948.cpp \
+		   							drivers/bus_i2c_stm32f30x.c \
+		   							drivers/bus_spi.c \
+		   							drivers/compass_ak8963.cpp \
+		   							drivers/compass_ak09916.cpp \
+		   							drivers/gpio_stm32f30x.c \
+		   							drivers/light_led_stm32f30x.c \
+		   							drivers/flash_m25p16.cpp \
+		   							drivers/pwm_mapping.cpp \
+		   							drivers/pwm_output.cpp \
+		   							drivers/pwm_rx.cpp \
+		   							drivers/serial_uart.c \
+		   							drivers/serial_uart_stm32f30x.c \
+		   							drivers/sound_beeper_stm32f30x.c \
+		   							drivers/system_stm32f30x.c \
+		   							drivers/timer.cpp \
+		   							drivers/timer_stm32f30x.c \
+		   							drivers/barometer_ms5611.cpp \
+		   							drivers/barometer_icp10111.cpp \
+
+PRIMUSV4_SENSORS = 	sensors/barometer.cpp \
+
+PRIMUSV4_SRC = startup_stm32f30x_md_gcc.S \
+		  					$(RANGING_SRC) \
+		  					$(PRIMUSX_DRIVERS) \
+		  					$(PRIMUSX_SENSORS) \
+		  					$(COMMON_SRC) \
+      					$(DRONA_SRC) \
+
 PRIMUSX_DRIVERS = 	drivers/adc.cpp \
 		   							drivers/adc_stm32f30x.c \
 		   							drivers/accgyro_mpu.cpp \
@@ -513,7 +546,7 @@ $(TARGET_ELF):  $(TARGET_OBJS)
 # Compile
 
 
- libs/lib$(TARGET)_$(FW_Version).a: $(TARGET_OBJS)
+$(BUILD_DIR)/$(TARGET)/libs/lib$(TARGET)_$(FW_Version).a: $(TARGET_OBJS)
 	mkdir -p $(dir $@)
 	$(AR) rcs $@ $^
 
@@ -541,7 +574,7 @@ $(BUILD_DIR)/$(TARGET)/bin/%.o: %.S
 	@$(CC) -c -o $@ $(ASFLAGS) $<
 
 
-libcreate:  libs/lib$(TARGET)_$(FW_Version).a
+libcreate:  $(BUILD_DIR)/$(TARGET)/libs/lib$(TARGET)_$(FW_Version).a
 
 ## clean       : clean up all temporary / machine-generated files
 clean:

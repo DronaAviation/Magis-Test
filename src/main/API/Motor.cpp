@@ -134,7 +134,7 @@ void Motor_P::initReverseMotor ( reverse_motor_e motor ) {
   switch ( motor ) {
 
     case M1:
-#if defined( PRIMUSX )
+#if defined( PRIMUSX ) || defined( PRIMUSV4 )
       RCC_AHBPeriphClockCmd ( RCC_AHBPeriph_GPIOA, ENABLE );
       RCC_APB1PeriphClockCmd ( RCC_APB1Periph_TIM3, ENABLE );
       timerHardware                   = { TIM3, GPIOA, Pin_6, TIM_Channel_1, TIM3_IRQn, 1, Mode_AF_PP, GPIO_PinSource6, GPIO_AF_2 };
@@ -165,7 +165,7 @@ void Motor_P::initReverseMotor ( reverse_motor_e motor ) {
       break;
 
     case M2:
-#if defined( PRIMUSX )
+#if defined( PRIMUSX ) || defined( PRIMUSV4 )
       RCC_AHBPeriphClockCmd ( RCC_AHBPeriph_GPIOB, ENABLE );
       RCC_APB1PeriphClockCmd ( RCC_APB1Periph_TIM2, ENABLE );
       timerHardware                   = { TIM3, GPIOB, Pin_5, TIM_Channel_2, TIM3_IRQn, 1, Mode_AF_PP, GPIO_PinSource5, GPIO_AF_2 };
@@ -195,7 +195,7 @@ void Motor_P::initReverseMotor ( reverse_motor_e motor ) {
       break;
 
     case M3:
-#if defined( PRIMUSX )
+#if defined( PRIMUSX ) || defined( PRIMUSV4 )
       RCC_AHBPeriphClockCmd ( RCC_AHBPeriph_GPIOB, ENABLE );
       RCC_APB1PeriphClockCmd ( RCC_APB1Periph_TIM3, ENABLE );
       timerHardware                   = { TIM3, GPIOB, Pin_7, TIM_Channel_4, TIM3_IRQn, 1, Mode_AF_PP, GPIO_PinSource7, GPIO_AF_10 };
@@ -224,7 +224,7 @@ void Motor_P::initReverseMotor ( reverse_motor_e motor ) {
       break;
 
     case M4:
-#if defined( PRIMUSX )
+#if defined( PRIMUSX ) || defined( PRIMUSV4 )
       RCC_AHBPeriphClockCmd ( RCC_AHBPeriph_GPIOB, ENABLE );
       RCC_APB2PeriphClockCmd ( RCC_APB2Periph_TIM8, ENABLE );
       timerHardware                   = { TIM8, GPIOB, Pin_6, TIM_Channel_1, TIM8_CC_IRQn, 1, Mode_AF_PP, GPIO_PinSource6, GPIO_AF_5 };

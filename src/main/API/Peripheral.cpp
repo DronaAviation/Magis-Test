@@ -146,7 +146,7 @@ void GPIO_P::init(unibus_e pin_number, GPIO_Mode_e mode)
 
         break;
 
-#if defined(PRIMUSX)
+#if defined( PRIMUSX ) || defined( PRIMUSV4 )
         case Pin10:
 
         gpio=GPIOA;
@@ -318,7 +318,7 @@ bool GPIO_P::read(unibus_e pin_number)
 
         break;
 
-#if defined(PRIMUSX)
+#if defined( PRIMUSX ) || defined( PRIMUSV4 )
         case Pin10:
 
         gpio=GPIOA;
@@ -458,7 +458,7 @@ void GPIO_P::write(unibus_e pin_number, GPIO_State_e STATE)
 
         break;
 
-#if defined(PRIMUSX)
+#if defined( PRIMUSX ) || defined( PRIMUSV4 )
         case Pin10:
 
         gpio=GPIOA;
@@ -955,12 +955,12 @@ void PWM_P::init(unibus_e pin_number, uint16_t pwmRate) {
 
         if(!isPwmInit[3]) {
 
-#if defined(PRIMUSX)
-            RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
+#if defined( PRIMUSX ) || defined( PRIMUSV4 )
+          RCC_AHBPeriphClockCmd ( RCC_AHBPeriph_GPIOB, ENABLE );
 
-            RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+          RCC_APB1PeriphClockCmd ( RCC_APB1Periph_TIM2, ENABLE );
 
-            timerHardware = {TIM2, GPIOB, Pin_11, TIM_Channel_4, TIM2_IRQn, 0, Mode_AF_PP, GPIO_PinSource11, GPIO_AF_1};
+          timerHardware = { TIM2, GPIOB, Pin_11, TIM_Channel_4, TIM2_IRQn, 0, Mode_AF_PP, GPIO_PinSource11, GPIO_AF_1 };
 #endif
 
 #if defined(PRIMUSX2)
@@ -1010,13 +1010,12 @@ void PWM_P::init(unibus_e pin_number, uint16_t pwmRate) {
 
         if(!isPwmInit[5]) {
 
+#if defined( PRIMUSX ) || defined( PRIMUSV4 )
+          RCC_AHBPeriphClockCmd ( RCC_AHBPeriph_GPIOB, ENABLE );
 
-#if defined(PRIMUSX)
-            RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOB, ENABLE);
+          RCC_APB1PeriphClockCmd ( RCC_APB1Periph_TIM2, ENABLE );
 
-            RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
-
-            timerHardware = {TIM2, GPIOB, Pin_3, TIM_Channel_2, TIM2_IRQn, 0, Mode_AF_PP, GPIO_PinSource3, GPIO_AF_1};
+          timerHardware = { TIM2, GPIOB, Pin_3, TIM_Channel_2, TIM2_IRQn, 0, Mode_AF_PP, GPIO_PinSource3, GPIO_AF_1 };
 #endif
 
 #if defined(PRIMUSX2)
@@ -1043,13 +1042,13 @@ void PWM_P::init(unibus_e pin_number, uint16_t pwmRate) {
 
         if(!isPwmInit[6]) {
 
-#if defined(PRIMUSX) 
- 
-            RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
+#if defined( PRIMUSX ) || defined( PRIMUSV4 )
 
-            RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);
+          RCC_AHBPeriphClockCmd ( RCC_AHBPeriph_GPIOA, ENABLE );
 
-            timerHardware = {TIM1, GPIOA, Pin_8, TIM_Channel_1, TIM1_CC_IRQn, 1, Mode_AF_PP, GPIO_PinSource8, GPIO_AF_6};
+          RCC_APB2PeriphClockCmd ( RCC_APB2Periph_TIM1, ENABLE );
+
+          timerHardware = { TIM1, GPIOA, Pin_8, TIM_Channel_1, TIM1_CC_IRQn, 1, Mode_AF_PP, GPIO_PinSource8, GPIO_AF_6 };
 #endif
 
 #if defined(PRIMUSX2) 
@@ -1078,12 +1077,12 @@ void PWM_P::init(unibus_e pin_number, uint16_t pwmRate) {
 
         if(!isPwmInit[7]) {
 
-#if defined(PRIMUSX)
-            RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA, ENABLE);
+#if defined( PRIMUSX ) || defined( PRIMUSV4 )
+          RCC_AHBPeriphClockCmd ( RCC_AHBPeriph_GPIOA, ENABLE );
 
-            RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
+          RCC_APB1PeriphClockCmd ( RCC_APB1Periph_TIM3, ENABLE );
 
-            timerHardware = {TIM3, GPIOA, Pin_4, TIM_Channel_2, TIM3_IRQn, 0, Mode_AF_PP, GPIO_PinSource4, GPIO_AF_2};
+          timerHardware = { TIM3, GPIOA, Pin_4, TIM_Channel_2, TIM3_IRQn, 0, Mode_AF_PP, GPIO_PinSource4, GPIO_AF_2 };
 #endif
 
 #if defined(PRIMUSX2)
@@ -1106,7 +1105,7 @@ void PWM_P::init(unibus_e pin_number, uint16_t pwmRate) {
 
         break;
 
-#if defined(PRIMUSX)
+#if defined( PRIMUSX ) || defined( PRIMUSV4 )
         /*
          case Pin15:
 

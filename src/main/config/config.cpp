@@ -397,7 +397,7 @@ static void resetConf ( void ) {
   masterConfig.mixerMode = MIXER_QUADX;
   //    masterConfig.mixerMode = MIXER_QUADP;
   featureClearAll ( );
-#if defined( CJMCU ) || defined( PRIMUSV3R ) || defined( SPARKY ) || defined( COLIBRI_RACE ) || defined( MOTOLAB ) || defined( ALIENWIIF3 ) || defined( PRIMUSX ) || defined( PRIMUSX2 )
+#if defined( CJMCU ) || defined( PRIMUSV3R ) || defined( SPARKY ) || defined( COLIBRI_RACE ) || defined( MOTOLAB ) || defined( ALIENWIIF3 ) || defined( PRIMUSX ) || defined( PRIMUSV4 )
   featureSet ( FEATURE_CURRENT_METER );    // testing virtual adc current measurement
   featureSet ( FEATURE_GPS );
 #endif

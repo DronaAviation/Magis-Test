@@ -82,7 +82,7 @@ void timerDataConfiguration ( ) {
   #define TIMER_APB2_PERIPHERALS ( RCC_APB2Periph_TIM1 | RCC_APB2Periph_GPIOA | RCC_APB2Periph_GPIOB )
 #endif
 
-#if defined( PRIMUSX ) || defined( ALIENWIIF3 )
+#if defined( PRIMUSX ) || defined( PRIMUSV4 )
   // Virtual Motor 4 Actual Motor M5
   timerHardware_t T4 = { TIM2, GPIOA, Pin_0, TIM_Channel_1, TIM2_IRQn, 1, Mode_AF_PP, GPIO_PinSource0, GPIO_AF_1 };    // PWM1  - PA0  - TIM2_CH1, TIM8
   // Virtual Motor 3 Actual Motor M6
