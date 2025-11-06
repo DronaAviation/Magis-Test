@@ -26,12 +26,12 @@
 ###############################################################################
 # User-configurable options
 FORKNAME	=	MAGIS
-TARGET	?=	
+TARGET	?=	PRIMUSX
 PROJECT ?= DEFAULT
-BUILD_TYPE	?= BIN
+BUILD_TYPE	?= LIB
 LIB_MAJOR_VERSION	=	0
 LIB_MINOR_VERSION	=	3
-FW_Version	=	2.2.0-beta
+FW_Version	=	2.2.2-beta
 API_Version	=	1.0.1
 # Flash size (KB).  Some low-end chips actually have more flash than advertised, use this to override.
 FLASH_SIZE	?=
@@ -353,7 +353,7 @@ PRIMUSV3R_SRC = startup_stm32f10x_md_gcc.S \
 		  					$(PRIMUSV3R_SENSORS) \
 								hardware_revision.cpp \
 
-PRIMUSX_DRIVERS = 	drivers/adc.cpp \
+PRIMUSV4_DRIVERS = 	drivers/adc.cpp \
 		   							drivers/adc_stm32f30x.c \
 		   							drivers/accgyro_mpu.cpp \
 		   							drivers/accgyro_mpu6500.cpp \
@@ -377,9 +377,9 @@ PRIMUSX_DRIVERS = 	drivers/adc.cpp \
 		   							drivers/barometer_ms5611.cpp \
 		   							drivers/barometer_icp10111.cpp \
 
-PRIMUSX_SENSORS = 	sensors/barometer.cpp \
+PRIMUSV4_SENSORS = 	sensors/barometer.cpp \
 
-PRIMUSX_SRC = startup_stm32f30x_md_gcc.S \
+PRIMUSV4_SRC = startup_stm32f30x_md_gcc.S \
 		  					$(RANGING_SRC) \
 		  					$(PRIMUSX_DRIVERS) \
 		  					$(PRIMUSX_SENSORS) \
