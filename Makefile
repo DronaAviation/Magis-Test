@@ -26,9 +26,9 @@
 ###############################################################################
 # User-configurable options
 FORKNAME	=	MAGIS
-TARGET	?=	PRIMUSV4
+TARGET	?=	
 PROJECT ?= DEFAULT
-BUILD_TYPE	?= LIB
+BUILD_TYPE	?= BIN
 LIB_MAJOR_VERSION	=	0
 LIB_MINOR_VERSION	=	3
 FW_Version	=	2.2.0-beta
@@ -353,7 +353,7 @@ PRIMUSV3R_SRC = startup_stm32f10x_md_gcc.S \
 		  					$(PRIMUSV3R_SENSORS) \
 								hardware_revision.cpp \
 
-PRIMUSV4_DRIVERS = 	drivers/adc.cpp \
+PRIMUSX_DRIVERS = 	drivers/adc.cpp \
 		   							drivers/adc_stm32f30x.c \
 		   							drivers/accgyro_mpu.cpp \
 		   							drivers/accgyro_mpu6500.cpp \
@@ -377,9 +377,9 @@ PRIMUSV4_DRIVERS = 	drivers/adc.cpp \
 		   							drivers/barometer_ms5611.cpp \
 		   							drivers/barometer_icp10111.cpp \
 
-PRIMUSV4_SENSORS = 	sensors/barometer.cpp \
+PRIMUSX_SENSORS = 	sensors/barometer.cpp \
 
-PRIMUSV4_SRC = startup_stm32f30x_md_gcc.S \
+PRIMUSX_SRC = startup_stm32f30x_md_gcc.S \
 		  					$(RANGING_SRC) \
 		  					$(PRIMUSX_DRIVERS) \
 		  					$(PRIMUSX_SENSORS) \
