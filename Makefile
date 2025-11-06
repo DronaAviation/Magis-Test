@@ -26,9 +26,9 @@
 ###############################################################################
 # User-configurable options
 FORKNAME	=	MAGIS
-TARGET	?=	PRIMUSX
+TARGET	?=	
 PROJECT ?= DEFAULT
-BUILD_TYPE	?= LIB
+BUILD_TYPE	?= BIN
 LIB_MAJOR_VERSION	=	0
 LIB_MINOR_VERSION	=	3
 FW_Version	=	2.2.2-beta
